@@ -2,40 +2,32 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Description: "This is an AWS Lambda function that collects CloudWatch logs and sends them to HyperDX in bulk, over HTTP."
 Parameters:
-  logzioListener:
+  hyperdxListener:
     Type: "String"
-    Description: "The HyperDX listener URL for your region. You can find explanations here: https://docs.logz.io/user-guide/accounts/account-region.html"
-    Default: 'https://listener.logz.io:8071'
-    AllowedValues:
-      - 'https://listener.logz.io:8071'
-      - 'https://listener-au.logz.io:8071'
-      - 'https://listener-ca.logz.io:8071'
-      - 'https://listener-eu.logz.io:8071'
-      - 'https://listener-nl.logz.io:8071'
-      - 'https://listener-uk.logz.io:8071'
-      - 'https://listener-wa.logz.io:8071'
-  logzioToken:
+    Description: "The HyperDX listener URL for your region."
+    Default: 'https://in.hyperdx.io'
+  hyperdxToken:
     Type: "String"
     Description: "HyperDX account token."
-  logzioType:
+  hyperdxType:
     Type: "String"
     Description: "The log type you'll use with this Lambda. Please note that you should create a new Lambda for each log type you use. This can be a built-in log type, or your custom log type"
     Default: "hyperdx_cloudwatch_lambda"
-  logzioFormat:
+  hyperdxFormat:
     Type: "String"
     Description: "JSON or text. If json, the lambda function will attempt to parse the message field as JSON and populate the event data with the parsed fields."
     Default: "text"
     AllowedValues:
       - "text"
       - "json"
-  logzioCompress:
+  hyperdxCompress:
     Type: "String"
     Description: "If true, the Lambda will send compressed logs. If false, the Lambda will send uncompressed logs."
     Default: "true"
     AllowedValues:
       - "true"
       - "false"
-  logzioEnrich:
+  hyperdxEnrich:
     Type: "String"
     Description: "Enriches the CloudWatch events with custom properties at ship time. The format is `key1=value1;key2=value2`. By default is empty."
     Default: ""
@@ -59,11 +51,11 @@ Parameters:
     MinValue: 0
     Default: 15
 Outputs:
-  LogzioCloudwatchLogsLambda:
+  HyperDXCloudwatchLogsLambda:
     Description: "HyperDX CW logs lambda ARN"
-    Value: !GetAtt LogzioCloudwatchLogsLambda.Arn
+    Value: !GetAtt HyperDXCloudwatchLogsLambda.Arn
 Resources:
-  LogzioCloudwatchLogsLambda:
+  HyperDXCloudwatchLogsLambda:
     Type: 'AWS::Serverless::Function'
     Properties:
       Runtime: python3.9
@@ -82,11 +74,11 @@ Resources:
             FilterPattern: "" #Match everything
       Environment:
         Variables:
-          LISTENER_URL: !Ref logzioListener
-          TOKEN: !Ref logzioToken
-          TYPE: !Ref logzioType
-          FORMAT: !Ref logzioFormat
-          COMPRESS: !Ref logzioCompress
-          ENRICH: !Ref logzioEnrich
+          LISTENER_URL: !Ref hyperdxListener
+          TOKEN: !Ref hyperdxToken
+          TYPE: !Ref hyperdxType
+          FORMAT: !Ref hyperdxFormat
+          COMPRESS: !Ref hyperdxCompress
+          ENRICH: !Ref hyperdxEnrich
           SHIPPER_LOG_LEVEL: !Ref shipperLogLevel
           REQUEST_TIMEOUT: !Ref requestTimeout
