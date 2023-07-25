@@ -123,7 +123,7 @@ class LogzioShipper(object):
     ACCOUNT_TOKEN_ENV = 'TOKEN'
     REGION_ENV = 'REGION'
     URL_ENV = 'LISTENER_URL'
-    BASE_URL = "https://listener.logz.io:8071"
+    BASE_URL = "https://in.hyperdx.io"
     region = None
     TIMEOUT_ENV = 'REQUEST_TIMEOUT'
     default_timeout = 15  # seconds
@@ -140,7 +140,7 @@ class LogzioShipper(object):
             self.region = os.environ.get(self.REGION_ENV)
             self._logzio_url = self.get_base_api_url()
         try:
-            self._logzio_url = "{0}/?token={1}".format(
+            self._logzio_url = "{0}/?hdx_token={1}&hdx_platform=aws-cw".format(
                 self._logzio_url, os.environ[self.ACCOUNT_TOKEN_ENV])
         except KeyError as e:
             logger.error(
