@@ -140,7 +140,7 @@ class LogzioShipper(object):
             self.region = os.environ.get(self.REGION_ENV)
             self._logzio_url = self.get_base_api_url()
         try:
-            self._logzio_url = "{0}/?hdx_token={1}&hdx_platform=aws-cw".format(
+            self._logzio_url = "{0}/?hdx_token={1}&hdx_platform=aws-lambda".format(
                 self._logzio_url, os.environ[self.ACCOUNT_TOKEN_ENV])
         except KeyError as e:
             logger.error(
