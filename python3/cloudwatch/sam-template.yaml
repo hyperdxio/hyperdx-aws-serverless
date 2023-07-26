@@ -2,14 +2,10 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Description: "This is an AWS Lambda function that collects CloudWatch logs and sends them to HyperDX in bulk, over HTTP."
 Parameters:
-  hyperdxListener:
+  hyperdxIngestionKey:
     Type: "String"
-    Description: "The HyperDX listener URL for your region."
-    Default: 'https://in.hyperdx.io'
-  hyperdxToken:
-    Type: "String"
-    Description: "HyperDX account token."
-  hyperdxType:
+    Description: "HyperDX Ingestion API Key."
+  hyperdxServiceName:
     Type: "String"
     Description: "The log type you'll use with this Lambda. Please note that you should create a new Lambda for each log type you use. This can be a built-in log type, or your custom log type"
     Default: "hyperdx_cloudwatch_lambda"
@@ -74,9 +70,8 @@ Resources:
             FilterPattern: "" #Match everything
       Environment:
         Variables:
-          LISTENER_URL: !Ref hyperdxListener
-          TOKEN: !Ref hyperdxToken
-          TYPE: !Ref hyperdxType
+          TOKEN: !Ref hyperdxIngestionKey
+          TYPE: !Ref hyperdxServiceName
           FORMAT: !Ref hyperdxFormat
           COMPRESS: !Ref hyperdxCompress
           ENRICH: !Ref hyperdxEnrich
