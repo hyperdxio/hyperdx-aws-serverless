@@ -16,13 +16,6 @@ Parameters:
     AllowedValues:
       - "text"
       - "json"
-  hyperdxCompress:
-    Type: "String"
-    Description: "If true, the Lambda will send compressed logs. If false, the Lambda will send uncompressed logs."
-    Default: "true"
-    AllowedValues:
-      - "true"
-      - "false"
   hyperdxEnrich:
     Type: "String"
     Description: "Enriches the CloudWatch events with custom properties at ship time. The format is `key1=value1;key2=value2`. By default is empty."
@@ -31,19 +24,9 @@ Parameters:
     Type: "String"
     Description: "CloudWatch Log Group name from where you want to send logs."
     Default: ""
-  shipperLogLevel:
-    Type: "String"
-    Description: "Log level of the shipping Lambda function."
-    AllowedValues:
-      - "DEBUG"
-      - "INFO"
-      - "WARNING"
-      - "ERROR"
-      - "CRITICAL"
-    Default: "INFO"
   requestTimeout:
     Type: "Number"
-    Description: "Timeout in seconds for each http request for sending logs into logz.io"
+    Description: "Timeout in seconds for each http request for sending logs into HyperDX."
     MinValue: 0
     Default: 15
 Outputs:
@@ -57,8 +40,8 @@ Resources:
       Runtime: python3.9
       Handler: lambda_function.lambda_handler
       CodeUri:
-        Bucket: logzio-aws-integrations-<<REGION>>
-        Key: cloudwatch-auto-deployment/<<VERSION>>/logzio-cloudwatch.zip
+        Bucket: hyperdx-aws-integrations-<<REGION>>
+        Key: cloudwatch-auto-deployment/<<VERSION>>/hyperdx-cloudwatch-log-shipper.zip
       FunctionName: !Ref AWS::StackName
       MemorySize: 512
       Timeout: 60
@@ -73,7 +56,5 @@ Resources:
           TOKEN: !Ref hyperdxIngestionKey
           TYPE: !Ref hyperdxServiceName
           FORMAT: !Ref hyperdxFormat
-          COMPRESS: !Ref hyperdxCompress
           ENRICH: !Ref hyperdxEnrich
-          SHIPPER_LOG_LEVEL: !Ref shipperLogLevel
           REQUEST_TIMEOUT: !Ref requestTimeout
