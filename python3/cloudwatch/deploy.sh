@@ -1,8 +1,8 @@
 # bin/bash
 
 VERSION="1.0.0"
-ORIGINAL_TEMPLATE_FILE_PATH="./python3/cloudwatch/sam-template.yaml"
-LOG_SHIPPER_ZIP_FILE_PATH="./python3/cloudwatch/dist/hyperdx-cloudwatch-log-shipper.zip"
+ORIGINAL_TEMPLATE_FILE_PATH="./sam-template.yaml"
+LOG_SHIPPER_ZIP_FILE_PATH="./dist/hyperdx-cloudwatch-log-shipper.zip"
 AWS_REGIONS=(
   "us-east-1"
   "us-east-2"

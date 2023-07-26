@@ -9,3 +9,8 @@ build:
 
 clean:
 	rm -rf dist/
+
+deploy:
+	$(MAKE) clean
+	$(MAKE) build
+	sh ./deploy.sh
