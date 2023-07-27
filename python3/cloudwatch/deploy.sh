@@ -1,6 +1,6 @@
 # bin/bash
 
-VERSION="1.0.0"
+VERSION="1.0.1"
 ORIGINAL_TEMPLATE_FILE_PATH="./sam-template.yaml"
 LOG_SHIPPER_ZIP_FILE_PATH="./dist/hyperdx-cloudwatch-log-shipper.zip"
 AWS_REGIONS=(

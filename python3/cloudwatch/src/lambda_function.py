@@ -159,11 +159,8 @@ def _get_additional_logs_data(aws_logs_data, context):
     except KeyError:
         pass
 
-    try:
-        additional_data['type'] = os.environ['TYPE']
-    except KeyError:
-        logger.info("Using default TYPE 'hyperdx_cloudwatch_lambda'.")
-        additional_data['type'] = 'hyperdx_cloudwatch_lambda'
+    additional_data['type'] = os.environ.get('TYPE')
+
     return additional_data
 
 
