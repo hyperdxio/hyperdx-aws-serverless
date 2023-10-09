@@ -1,7 +1,7 @@
 
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
-Description: "This is an AWS Lambda function that collects Kinesis and sends them to Logz.io in bulk, over HTTP."
+Description: "This is an AWS Lambda function that collects Kinesis and sends them to HyperDX in bulk, over HTTP."
 Parameters:
   LogzioURL:
     Type: "String"
@@ -62,7 +62,7 @@ Parameters:
 
 Outputs:
     LogzioKinesisLambda:
-      Description: "Logz.io Kinesis lambda ARN"
+      Description: "HyperDX Kinesis lambda ARN"
       Value: !GetAtt LogzioKinesisLambda.Arn
 
 Resources:

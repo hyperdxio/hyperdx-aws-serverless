@@ -1,6 +1,6 @@
 # Amplify Access Logs Shipper - Lambda
 
-This is an AWS Lambda function that collects Amplify access logs and sends them to Logz.io in bulk over HTTP.
+This is an AWS Lambda function that collects Amplify access logs and sends them to HyperDX in bulk over HTTP.
 
 <div id="manual-lambda-configuration">
 
@@ -93,7 +93,7 @@ git clone https://github.com/logzio/logzio_aws_serverless.git \
 * Replace `XXX66029XXXX` with your AWS Account ID.
 * Replace `XXXXdn0mprXXXX` with the AWS Amplify App ID.
 
-#### 6. Check Logz.io for your logs
+#### 6. Check HyperDX for your logs
 
 Give your logs some time to get from your system to ours, and then open [Kibana](https://app.logz.io/#/dashboard/kibana).
 

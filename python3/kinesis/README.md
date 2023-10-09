@@ -1,6 +1,6 @@
 # Kinesis Stream Shipper - Lambda
 
-This is an AWS Lambda function that consumes a Kinesis stream and sends logs to Logz.io in bulk over HTTPS.
+This is an AWS Lambda function that consumes a Kinesis stream and sends logs to HyperDX in bulk over HTTPS.
 
 <div class="branching-container">
 
@@ -16,7 +16,7 @@ This is an AWS Lambda function that consumes a Kinesis stream and sends logs to 
 
 #### 1. Create a new Lambda function
 
-This Lambda function will consume a Kinesis data stream and sends the logs to Logz.io in bulk over HTTP.
+This Lambda function will consume a Kinesis data stream and sends the logs to HyperDX in bulk over HTTP.
 
 Open the AWS Lambda Console, and click **Create function**.
 Choose **Author from scratch**, and use this information:
@@ -40,7 +40,7 @@ Choose **Upload a .ZIP file** from this list.
 
 Click **Upload**, and choose the zip file you created earlier (`logzio-kinesis.zip`).
 
-In the _Environment variables_ section, set your Logz.io account token, URL, and log type, and any other variables that you need to use.
+In the _Environment variables_ section, set your HyperDX account token, URL, and log type, and any other variables that you need to use.
 
 ###### Environment variables
 
@@ -73,7 +73,7 @@ Below the Designer, you'll see the Configure triggers panel. Choose the **Kinesi
 
 Click **Add**, and then click **Save** at the top of the page.
 
-#### 6. Check Logz.io for your logs
+#### 6. Check HyperDX for your logs
 
 Give your logs some time to get from your system to ours, and then open [Kibana](https://app.logz.io/#/dashboard/kibana).
 
@@ -142,7 +142,7 @@ aws cloudformation deploy \
 | KinesisStreamBatchSize (Default: `100`)           | The largest number of records to read from your stream at one time.                                                                                                                                                                                                                                     |
 | KinesisStreamStartingPosition (Default: `LATEST`) | The position in the stream to start reading from. For more information, see [ShardIteratorType](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html) in the Amazon Kinesis API Reference.                                                                                 |
 
-#### 4. Check Logz.io for your logs
+#### 4. Check HyperDX for your logs
 
 Give your logs some time to get from your system to ours, and then open [Kibana](https://app.logz.io/#/dashboard/kibana).
 

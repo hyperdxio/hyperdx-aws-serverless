@@ -1,6 +1,6 @@
 # Parse JSON array into multiple logs
 
-One of the features of our Kinesis lambda function is that it parses an array of JSON objects into discrete events.  That way, ElasticSearch plays nicer with these logs and they will be fully parsed and mapped by Logz.io.
+One of the features of our Kinesis lambda function is that it parses an array of JSON objects into discrete events.  That way, ElasticSearch plays nicer with these logs and they will be fully parsed and mapped by HyperDX.
 
 ##### For Example:
 For the following record:
@@ -29,7 +29,7 @@ For the following record:
 }
 ```
 
-Logz.io will receive the following 3 different logs:
+HyperDX will receive the following 3 different logs:
 ```json
 {
    "eventID": "shardId-000000000000:495451152434977345683475644582180062593244200961",
