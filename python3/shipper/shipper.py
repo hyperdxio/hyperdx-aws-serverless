@@ -246,17 +246,17 @@ class LogzioShipper(object):
         try:
             do_request()
             logger.info(
-                "Successfully sent bulk of {} logs to Logz.io!".format(len(self._logs)))
+                "Successfully sent bulk of {} logs to HyperDX!".format(len(self._logs)))
         except MaxRetriesException:
             logger.error('Retry limit reached. Failed to send log entry.')
             raise MaxRetriesException()
         except BadLogsException as e:
-            logger.error("Got 400 code from Logz.io. This means that some of your logs are too big, "
+            logger.error("Got 400 code from HyperDX. This means that some of your logs are too big, "
                          "or badly formatted. response: {0}".format(e))
             logger.warning("Dropping logs that cause the bad response...")
         except UnauthorizedAccessException:
             logger.error(
-                "You are not authorized with Logz.io! Token OK? dropping logs...")
+                "You are not authorized with HyperDX! Token OK? dropping logs...")
             raise UnauthorizedAccessException()
         except UnknownURL:
             logger.error("Please check your url...")

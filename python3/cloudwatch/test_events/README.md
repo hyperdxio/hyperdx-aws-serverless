@@ -1,7 +1,7 @@
 
 # Working with test events
 
-You can generate test events using the Logz.io Lambda test events generator and add these events to your Lambda function. This functionality is currently only available on Linux & macOS.
+You can generate test events using the HyperDX Lambda test events generator and add these events to your Lambda function. This functionality is currently only available on Linux & macOS.
 
 
 ## 1. Generate a test event
@@ -31,12 +31,12 @@ You can generate test events using the Logz.io Lambda test events generator and 
 
 To run the test event, select **Test** in the **Test** tab. The Lambda function will run and generate two logs in your account.
 
-The test should produce 2 logs in your Logz.io account, with the following messages:
+The test should produce 2 logs in your HyperDX account, with the following messages:
 
 ```shell
-[ERROR] Logz.io cloudwatch test log1
+[ERROR] HyperDX cloudwatch test log1
 ```
 
 ```shell
-[ERROR] Logz.io cloudwatch test log2
+[ERROR] HyperDX cloudwatch test log2
 ```
